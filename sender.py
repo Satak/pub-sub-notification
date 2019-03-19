@@ -4,16 +4,10 @@ from os import getenv
 
 PROJECT_ID = getenv('GCP_PROJECT')
 TOPIC_NAME = getenv('TOPIC_NAME')
-publisher = pubsub_v1.PublisherClient()
-TOPIC = publisher.topic_path(PROJECT_ID, TOPIC_NAME)
 RECIPIENTS = getenv('RECIPIENTS', '').split(',')
 
-
-def send_message(data, topic):
-    return publisher.publish(
-        topic,
-        data=data.encode()
-    )
+publisher = pubsub_v1.PublisherClient()
+TOPIC = publisher.topic_path(PROJECT_ID, TOPIC_NAME)
 
 
 def main():
@@ -23,7 +17,7 @@ def main():
         'message': 'Test email body'
     }
     json_data = json.dumps(dict_data)
-    _ = send_message(json_data, TOPIC)
+    _ = publisher.publish(TOPIC, data=json_data.encode())
     print(f'Message sent to topic: {TOPIC_NAME}')
 
 if __name__ == '__main__':
