@@ -26,6 +26,7 @@ If you use AWS SES you need to first validate sender and receiver email addresse
 
 It requires these environment variables:
 
+- `GOOGLE_APPLICATION_CREDENTIALS` (path to your service account `json` file)
 - `GCP_PROJECT`
 - `TOPIC_NAME` (gcp pub/sub topic)
 - `RECIPIENTS` (comma separated string with email recipients. Example: `test@test.com,another@domain.com`)
