@@ -30,3 +30,7 @@ It requires these environment variables:
 - `GCP_PROJECT`
 - `TOPIC_NAME` (gcp pub/sub topic)
 - `RECIPIENTS` (comma separated string with email recipients. Example: `test@test.com,another@domain.com`)
+
+## Architecture
+
+![UI Main](/img/pubsub-notification.png)
